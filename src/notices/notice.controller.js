@@ -1,5 +1,6 @@
 const Notice = require('./notice.model');
 
+// Creates a new notice document with request body data and saves it to database
 const createANotice = async (req, res) => {
     console.log(req.body);
     try {
@@ -17,6 +18,7 @@ const createANotice = async (req, res) => {
     }
 };
 
+// Retrieves all notices from database sorted by creation date in descending order
 const getAllNotice = async (req, res) => {
     try {
         const notices = await Notice.find().sort({ createdAt: -1 });
@@ -32,6 +34,7 @@ const getAllNotice = async (req, res) => {
     }
 };
 
+// Finds and returns a specific notice by its ID from the database
 const getNoticeById = async (req, res) => {
     try {
         const notice = await Notice.findById(req.params.id);
@@ -47,6 +50,7 @@ const getNoticeById = async (req, res) => {
     }
 };
 
+// Updates an existing notice document by ID with new data from request body
 const updateNotice = async (req, res) => {
     try {
         const { id } = req.params;
@@ -66,6 +70,7 @@ const updateNotice = async (req, res) => {
     }
 };
 
+// Removes a notice document from database by its ID
 const deleteNotice = async (req, res) => {
     try {
         const { id } = req.params;
